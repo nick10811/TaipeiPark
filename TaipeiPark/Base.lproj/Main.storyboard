@@ -60,15 +60,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-qw-Hp6">
-                                                <rect key="frame" x="0.0" y="252" width="375" height="335"/>
+                                                <rect key="frame" x="0.0" y="252" width="375" height="295"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVF-qQ-N2U">
-                                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVF-qQ-N2U">
+                                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="gLp-ro-ukl"/>
+                                                    <constraint firstAttribute="height" constant="120" id="gLp-ro-ukl"/>
                                                 </constraints>
                                             </scrollView>
                                         </subviews>
@@ -98,6 +99,7 @@
                         <outlet property="name" destination="cb4-Yh-1Yn" id="8Z6-oc-nmv"/>
                         <outlet property="openTime" destination="0fK-Nl-Qvh" id="dRB-uf-VA9"/>
                         <outlet property="parkName" destination="IIT-lH-cl4" id="tB1-2I-zHk"/>
+                        <outlet property="scrollView" destination="mVF-qQ-N2U" id="wik-yJ-tXf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Attraction.h"
 
 @interface DBHelp : NSObject
 
 - (void)batchInsertAttraction:(NSArray *)atts;
-- (NSMutableArray *)getRelationAttractions:(NSString *)parkName;
+- (NSMutableArray *)getRelationAttractions:(Attraction *)selected;
 
 @end

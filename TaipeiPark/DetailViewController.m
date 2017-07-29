@@ -7,6 +7,10 @@
 //
 
 #import "DetailViewController.h"
+#import "DBHelp.h"
+#import "RelationView.h"
+#import "AppDelegate.h"
+#import <MBProgressHUD.h>
 
 @interface DetailViewController ()
 
@@ -16,6 +20,8 @@
 
 @synthesize selectedAttraction;
 
+MBProgressHUD *_hud;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -24,7 +30,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (![selectedAttraction.Image isEqualToString:@""]) {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"Loading";
+    
+    if ([AppDelegate isImage:selectedAttraction.Image]) {
         NSURL *url = [NSURL URLWithString:selectedAttraction.Image];
         img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:url]];
     }
@@ -32,6 +41,47 @@
     name.text = selectedAttraction.Name;
     openTime.text = [NSString stringWithFormat:@"開放時間：%@", selectedAttraction.OpenTime];
     intro.text = selectedAttraction.Introduction;
+    
+    DBHelp *db = [[DBHelp alloc] init];
+    NSMutableArray *arr = [db getRelationAttractions:selectedAttraction];
+    
+    CGSize size = CGSizeMake(100*arr.count, 120);
+    scrollView.contentSize = size;
+    
+    RelationView *preView;
+    for (int i = 0; i < arr.count; i++) {
+        RelationView *rView = [[RelationView alloc] init];
+        Attraction *tmp = (Attraction *)[arr objectAtIndex:i];
+        if ([AppDelegate isImage:tmp.Image]) {
+            rView.img.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tmp.Image]]];
+            
+        } else {
+            rView.img.image = [UIImage imageNamed:@"noImage.png"];
+        }
+        
+        rView.name.text = tmp.Name;
+    
+        if (i == 0) {
+            rView.frame = CGRectMake(0, 0, 100, 120);
+        } else {
+            rView.frame = CGRectOffset(preView.frame, 100, 0);
+        }
+        
+        [scrollView addSubview:rView];
+        preView = rView;
+        
+    }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_hud) {
+        [_hud setHidden:YES];
+        _hud = nil;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,6 +15,7 @@
     IBOutlet UILabel *name;
     IBOutlet UILabel *openTime;
     IBOutlet UILabel *intro;
+    IBOutlet UIScrollView *scrollView;
 }
 
 @property (weak, nonatomic) Attraction *selectedAttraction;

@@ -33,9 +33,11 @@
     [db close];
 }
 
-- (NSMutableArray *)getRelationAttractions:(NSString *)parkName {
+- (NSMutableArray *)getRelationAttractions:(Attraction *)selected {
     FMDatabase *db = [self dbPreOpen];
-    FMResultSet *resultSet = [db executeQuery:@"SELECT name, image FROM Attractions WHERE parkName LIKE ？ ", parkName];
+    NSString *sql = [NSString stringWithFormat:@"SELECT name, image FROM Attractions WHERE parkName = '%@' AND name != '%@'", selected.ParkName, selected.Name];
+    FMResultSet *resultSet = [db executeQuery:sql];
+    ;
     
     NSMutableArray *results = [[NSMutableArray alloc] init];
     while ([resultSet next]) {

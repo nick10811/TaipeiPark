@@ -12,6 +12,7 @@
 #import <MBProgressHUD.h>
 #import "DBHelp.h"
 #import "DetailViewController.h"
+#import "AppDelegate.h"
 
 @interface AttractionsTableViewController ()
 
@@ -115,7 +116,7 @@ MBProgressHUD *hud;
     
     Attraction *attraction = (Attraction *)[attractios objectAtIndex:indexPath.row];
     
-    if (![attraction.Image isEqualToString:@""]) {
+    if ([AppDelegate isImage:attraction.Image]) {
         cell.img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
     }
     cell.parkName.text = attraction.ParkName;

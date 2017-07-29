@@ -14,6 +14,15 @@
 
 @implementation AppDelegate
 
++ (BOOL)isImage:(NSString *)path {
+    NSString *extension = [path pathExtension];
+    
+    if ([[extension uppercaseString] isEqualToString:@"JPG"] ||
+        [[extension uppercaseString] isEqualToString:@"PNG"]) {
+        return YES;
+    }
+    return NO;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9425995F1F2C90B6002850C7 /* RelationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425995E1F2C90B6002850C7 /* RelationView.m */; };
 		947BA43D1F2C0A5900570F2F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BA43C1F2C0A5900570F2F /* DetailViewController.m */; };
 		947BA4401F2C272D00570F2F /* DBHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BA43F1F2C272D00570F2F /* DBHelp.m */; };
 		947BA4421F2C27D000570F2F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */; };
@@ -39,6 +40,8 @@
 		3D2FE807C2D79782F1BC10E5 /* Pods-TaipeiParkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiParkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiParkTests/Pods-TaipeiParkTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D3EEC7FFBE67CDF6596133A /* Pods-TaipeiPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.debug.xcconfig"; sourceTree = "<group>"; };
 		6DA56B8D11ED93DEE5A552C1 /* Pods-TaipeiPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.release.xcconfig"; sourceTree = "<group>"; };
+		9425995D1F2C90B6002850C7 /* RelationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationView.h; sourceTree = "<group>"; };
+		9425995E1F2C90B6002850C7 /* RelationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationView.m; sourceTree = "<group>"; };
 		947BA43B1F2C0A5900570F2F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		947BA43C1F2C0A5900570F2F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		947BA43E1F2C272D00570F2F /* DBHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHelp.h; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				94F973B41F2B89AF00FB46C5 /* MyCell.m */,
 				947BA43E1F2C272D00570F2F /* DBHelp.h */,
 				947BA43F1F2C272D00570F2F /* DBHelp.m */,
+				9425995D1F2C90B6002850C7 /* RelationView.h */,
+				9425995E1F2C90B6002850C7 /* RelationView.m */,
 			);
 			name = Utilies;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 			files = (
 				947BA4401F2C272D00570F2F /* DBHelp.m in Sources */,
 				94808DB91F2A155800AF1F91 /* Attraction.m in Sources */,
+				9425995F1F2C90B6002850C7 /* RelationView.m in Sources */,
 				94808D821F2A02F700AF1F91 /* AttractionsTableViewController.m in Sources */,
 				94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */,
 				94808D5D1F2A017300AF1F91 /* main.m in Sources */,
