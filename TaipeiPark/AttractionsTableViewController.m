@@ -53,10 +53,8 @@ MBProgressHUD *hud;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.estimatedRowHeight = 60;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    [self.tableView registerNib:[MyCell nib] forCellReuseIdentifier:[MyCell identifier]];
-    
+    self.tableView.estimatedRowHeight = 20;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -69,7 +67,7 @@ MBProgressHUD *hud;
     [super viewWillAppear:animated];
     
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
+    hud.label.text = @"Loading";
     [self getAttractions];
 }
 
@@ -86,7 +84,7 @@ MBProgressHUD *hud;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"numbers:%d",(int)result.count);
-    return 1;
+    return result.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,7 +108,10 @@ MBProgressHUD *hud;
     }
     
     Attraction *attraction = (Attraction *)[attractios objectAtIndex:indexPath.row];
-    cell.img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
+    
+    if (![attraction.Image isEqualToString:@""]) {
+        cell.img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
+    }
     cell.parkName.text = attraction.ParkName;
     cell.name.text = attraction.Name;
     cell.introduction.text = attraction.Introduction;
