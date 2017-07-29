@@ -11,6 +11,7 @@
 #import "Attraction.h"
 #import <MBProgressHUD.h>
 #import "DBHelp.h"
+#import "DetailViewController.h"
 
 @interface AttractionsTableViewController ()
 
@@ -125,7 +126,12 @@ MBProgressHUD *hud;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    DetailViewController *vc = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    vc.selectedAttraction = (Attraction *)[attractios objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

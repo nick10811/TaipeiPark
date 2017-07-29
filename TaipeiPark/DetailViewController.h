@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Attraction.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController {
+    IBOutlet UIImageView *img;
+    IBOutlet UILabel *parkName;
+    IBOutlet UILabel *name;
+    IBOutlet UILabel *openTime;
+    IBOutlet UILabel *intro;
+}
+
+@property (weak, nonatomic) Attraction *selectedAttraction;
 
 @end

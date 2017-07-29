@@ -14,9 +14,24 @@
 
 @implementation DetailViewController
 
+@synthesize selectedAttraction;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (![selectedAttraction.Image isEqualToString:@""]) {
+        NSURL *url = [NSURL URLWithString:selectedAttraction.Image];
+        img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:url]];
+    }
+    parkName.text = selectedAttraction.ParkName;
+    name.text = selectedAttraction.Name;
+    openTime.text = [NSString stringWithFormat:@"開放時間：%@", selectedAttraction.OpenTime];
+    intro.text = selectedAttraction.Introduction;
 }
 
 - (void)didReceiveMemoryWarning {
