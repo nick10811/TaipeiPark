@@ -10,6 +10,7 @@
 #import "MyCell.h"
 #import "Attraction.h"
 #import <MBProgressHUD.h>
+#import "DBHelp.h"
 
 @interface AttractionsTableViewController ()
 
@@ -31,9 +32,12 @@ MBProgressHUD *hud;
         
         result = json.result;
         attractios = [NSArray arrayWithArray:result.results];
-//        for (Attraction *att in result.results) {
-//            
-//        }
+        
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            DBHelp *db = [[DBHelp alloc] init];
+            [db batchInsertAttraction:attractios];
+        });
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (hud) {
@@ -69,6 +73,7 @@ MBProgressHUD *hud;
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"Loading";
     [self getAttractions];
+    
 }
 
 - (void)didReceiveMemoryWarning {

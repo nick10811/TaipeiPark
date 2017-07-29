@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		947BA43D1F2C0A5900570F2F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BA43C1F2C0A5900570F2F /* DetailViewController.m */; };
+		947BA4401F2C272D00570F2F /* DBHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BA43F1F2C272D00570F2F /* DBHelp.m */; };
+		947BA4421F2C27D000570F2F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */; };
 		94808D5D1F2A017300AF1F91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D5C1F2A017300AF1F91 /* main.m */; };
 		94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D5F1F2A017300AF1F91 /* AppDelegate.m */; };
 		94808D661F2A017300AF1F91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94808D641F2A017300AF1F91 /* Main.storyboard */; };
@@ -39,6 +41,9 @@
 		6DA56B8D11ED93DEE5A552C1 /* Pods-TaipeiPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.release.xcconfig"; sourceTree = "<group>"; };
 		947BA43B1F2C0A5900570F2F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		947BA43C1F2C0A5900570F2F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		947BA43E1F2C272D00570F2F /* DBHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHelp.h; sourceTree = "<group>"; };
+		947BA43F1F2C272D00570F2F /* DBHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHelp.m; sourceTree = "<group>"; };
+		947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		94808D581F2A017300AF1F91 /* TaipeiPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaipeiPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94808D5C1F2A017300AF1F91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		94808D5E1F2A017300AF1F91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947BA4421F2C27D000570F2F /* libsqlite3.0.tbd in Frameworks */,
 				E4659A84D005DEAF189FE226 /* libPods-TaipeiPark.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +167,8 @@
 				94808DB81F2A155800AF1F91 /* Attraction.m */,
 				94F973B31F2B89AF00FB46C5 /* MyCell.h */,
 				94F973B41F2B89AF00FB46C5 /* MyCell.m */,
+				947BA43E1F2C272D00570F2F /* DBHelp.h */,
+				947BA43F1F2C272D00570F2F /* DBHelp.m */,
 			);
 			name = Utilies;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 		D471CB73AA2214E12FCF86AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */,
 				FE7680B838EF1CF4D2DCE76B /* libPods-TaipeiPark.a */,
 				9BED85B02C920465F2A9B942 /* libPods-TaipeiParkTests.a */,
 			);
@@ -389,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947BA4401F2C272D00570F2F /* DBHelp.m in Sources */,
 				94808DB91F2A155800AF1F91 /* Attraction.m in Sources */,
 				94808D821F2A02F700AF1F91 /* AttractionsTableViewController.m in Sources */,
 				94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */,
