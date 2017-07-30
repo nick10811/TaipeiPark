@@ -80,6 +80,42 @@
     return results;
 }
 
+- (NSMutableDictionary *)getAttractionsByPark {
+    FMDatabase *db = [self dbPreOpen];
+    FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM Attractions ORDER BY parkName"];
+    
+    NSMutableDictionary *attractions = [[NSMutableDictionary alloc] init];
+    while ([resultSet next]) {
+        Attraction *tmp = [[Attraction alloc] init];
+        tmp.ParkName = [resultSet stringForColumn:@"parkName"];
+        tmp.Name = [resultSet stringForColumn:@"name"];
+        tmp.YearBuilt = [resultSet stringForColumn:@"yearBuild"];
+        tmp.OpenTime = [resultSet stringForColumn:@"openTime"];
+        tmp.Image = [resultSet stringForColumn:@"image"];
+        tmp.Introduction = [resultSet stringForColumn:@"introduction"];
+        
+        if (![[attractions allKeys] containsObject:tmp.ParkName]) {
+            NSMutableArray *relations = [[NSMutableArray alloc] init];
+            [relations addObject:tmp];
+            
+            [attractions setObject:relations forKey:tmp.ParkName];
+            
+        } else {
+            NSMutableArray *existRelation = [attractions objectForKey:tmp.ParkName];
+            [existRelation addObject:tmp];
+            
+            [attractions removeObjectForKey:tmp.ParkName];
+            [attractions setObject:existRelation forKey:tmp.ParkName];
+            
+        }
+        
+    }
+    
+    [db close];
+    
+    return attractions;
+}
+
 #pragma mark - private
 - (FMDatabase *)dbPreOpen {
     NSString *doc =[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES)  lastObject];

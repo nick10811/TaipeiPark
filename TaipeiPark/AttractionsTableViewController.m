@@ -21,14 +21,16 @@
 
 @implementation AttractionsTableViewController
 
-NSMutableArray *attractios;
+NSArray *parks; // section
+NSMutableDictionary *attractionsInPark; // cell
 MBProgressHUD *hud;
 
 - (void)refresh {
-    DBHelp *db = [[DBHelp alloc] init];
-    attractios = [NSMutableArray arrayWithArray:[db getAttractions]];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
+        DBHelp *db = [[DBHelp alloc] init];
+        attractionsInPark = [db getAttractionsByPark];
+        parks = [attractionsInPark allKeys];
+        
         [self.tableView reloadData];
         
         if (hud) {
@@ -45,7 +47,7 @@ MBProgressHUD *hud;
     // lock view to avoid user select cell
     [self.refreshControl endRefreshing];
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = @"Loading";
+    hud.label.text = @"Loading...";
     
     Server *server = [[Server alloc] init];
     [server postQuery];
@@ -59,8 +61,9 @@ MBProgressHUD *hud;
     self.tableView.estimatedRowHeight = 20;
     
     DBHelp *db = [[DBHelp alloc] init];
-    attractios = [NSMutableArray arrayWithArray:[db getAttractions]];
-    if (attractios.count == 0) {
+    attractionsInPark = [db getAttractionsByPark];
+    parks = [attractionsInPark allKeys];
+    if (parks.count == 0) {
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.label.text = @"Loading...";
         
@@ -91,12 +94,17 @@ MBProgressHUD *hud;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    int num = (int)parks.count;
+    NSLog(@"section number: %d", num);
+    return num;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numbers:%d",(int)attractios.count);
-    return attractios.count;
+    NSString *parkName = parks[section];
+    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    int num = (int)relactions.count;
+    NSLog(@"section:%@, num:%d", parkName, num);
+    return num;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,6 +113,11 @@ MBProgressHUD *hud;
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *parkName = parks[section];
+    return parkName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,7 +132,10 @@ MBProgressHUD *hud;
         }
     }
     
-    Attraction *attraction = (Attraction *)[attractios objectAtIndex:indexPath.row];
+    NSString *parkName = parks[indexPath.section];
+    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    
+    Attraction *attraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
     if ([AppDelegate isImage:attraction.Image]) {
         cell.img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
@@ -134,8 +150,11 @@ MBProgressHUD *hud;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSString *parkName = parks[indexPath.section];
+    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    
     DetailViewController *vc = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    vc.selectedAttraction = (Attraction *)[attractios objectAtIndex:indexPath.row];
+    vc.selectedAttraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
