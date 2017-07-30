@@ -28,6 +28,7 @@
         [self addSubview:img];
         name = [[UILabel alloc] initWithFrame:CGRectMake(5, 90, 80, 20)];
         name.adjustsFontSizeToFitWidth = YES;
+        name.textAlignment = NSTextAlignmentCenter;
         [self addSubview:name];
     }
     return self;

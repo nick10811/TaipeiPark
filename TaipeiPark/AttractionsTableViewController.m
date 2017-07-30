@@ -151,10 +151,12 @@ MBProgressHUD *hud;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *parkName = parks[indexPath.section];
-    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    NSMutableArray *relactions = [attractionsInPark objectForKey:parkName];
     
     DetailViewController *vc = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     vc.selectedAttraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
+    vc.relations = [NSMutableArray arrayWithArray:relactions];
+    [vc.relations removeObjectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

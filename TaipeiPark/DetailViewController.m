@@ -25,6 +25,7 @@ MBProgressHUD *_hud;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,35 +43,34 @@ MBProgressHUD *_hud;
     openTime.text = [NSString stringWithFormat:@"開放時間：%@", selectedAttraction.OpenTime];
     intro.text = selectedAttraction.Introduction;
     
-    DBHelp *db = [[DBHelp alloc] init];
-    NSMutableArray *arr = [db getRelationAttractions:selectedAttraction];
-    
-    CGSize size = CGSizeMake(100*arr.count, 120);
+    CGSize size = CGSizeMake(100*_relations.count, 120);
     scrollView.contentSize = size;
     
-    RelationView *preView;
-    for (int i = 0; i < arr.count; i++) {
-        RelationView *rView = [[RelationView alloc] init];
-        Attraction *tmp = (Attraction *)[arr objectAtIndex:i];
-        if ([AppDelegate isImage:tmp.Image]) {
-            rView.img.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tmp.Image]]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        RelationView *preView;
+        for (int i = 0; i < _relations.count; i++) {
+            RelationView *rView = [[RelationView alloc] init];
+            Attraction *tmp = (Attraction *)[_relations objectAtIndex:i];
+            if ([AppDelegate isImage:tmp.Image]) {
+                rView.img.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tmp.Image]]];
+                
+            } else {
+                rView.img.image = [UIImage imageNamed:@"noImage.png"];
+            }
             
-        } else {
-            rView.img.image = [UIImage imageNamed:@"noImage.png"];
+            rView.name.text = tmp.Name;
+            
+            if (i == 0) {
+                rView.frame = CGRectMake(0, 0, 100, 120);
+            } else {
+                rView.frame = CGRectOffset(preView.frame, 100, 0);
+            }
+            
+            [scrollView addSubview:rView];
+            preView = rView;
+            
         }
-        
-        rView.name.text = tmp.Name;
-    
-        if (i == 0) {
-            rView.frame = CGRectMake(0, 0, 100, 120);
-        } else {
-            rView.frame = CGRectOffset(preView.frame, 100, 0);
-        }
-        
-        [scrollView addSubview:rView];
-        preView = rView;
-        
-    }
+    });
     
 }
 
@@ -90,13 +90,13 @@ MBProgressHUD *_hud;
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

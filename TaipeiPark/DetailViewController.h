@@ -19,5 +19,6 @@
 }
 
 @property (weak, nonatomic) Attraction *selectedAttraction;
+@property (strong, nonatomic) NSMutableArray *relations;
 
 @end
