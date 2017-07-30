@@ -12,6 +12,8 @@
 @interface DBHelp : NSObject
 
 - (void)batchInsertAttraction:(NSArray *)atts;
+- (void)cleanAttractions;
 - (NSMutableArray *)getRelationAttractions:(Attraction *)selected;
+- (NSMutableArray *)getAttractions;
 
 @end

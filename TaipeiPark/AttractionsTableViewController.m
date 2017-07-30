@@ -20,39 +20,21 @@
 
 @implementation AttractionsTableViewController
 
-Result *result;
-NSArray *attractios;
+NSMutableArray *attractios;
 MBProgressHUD *hud;
 
-- (void)getAttractions {
-    // get json and store to sqlite
-    NSURL *url = [NSURL URLWithString:@"http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=bf073841-c734-49bf-a97f-3757a6013812"];
+- (void)refresh {
+    DBHelp *db = [[DBHelp alloc] init];
+    attractios = [NSMutableArray arrayWithArray:[db getAttractions]];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        RtnData *json = [[RtnData alloc] initWithData:data error:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
         
-        result = json.result;
-        attractios = [NSArray arrayWithArray:result.results];
-        
-
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            DBHelp *db = [[DBHelp alloc] init];
-            [db batchInsertAttraction:attractios];
-        });
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (hud) {
-                [hud setHidden:YES];
-                hud = nil;
-            }
-        
-            [self.tableView reloadData];
-        });
-        
-    }];
-    
-    [dataTask resume];
+        if (hud) {
+            [hud setHidden:YES];
+            hud = nil;
+        }
+    });
     
 }
 
@@ -61,6 +43,16 @@ MBProgressHUD *hud;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
+    
+    DBHelp *db = [[DBHelp alloc] init];
+    attractios = [NSMutableArray arrayWithArray:[db getAttractions]];
+    if (attractios.count == 0) {
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"Loading";
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"DataUpdate" object:nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -71,10 +63,6 @@ MBProgressHUD *hud;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = @"Loading";
-    [self getAttractions];
     
 }
 
@@ -90,8 +78,8 @@ MBProgressHUD *hud;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numbers:%d",(int)result.count);
-    return result.count;
+    NSLog(@"numbers:%d",(int)attractios.count);
+    return attractios.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

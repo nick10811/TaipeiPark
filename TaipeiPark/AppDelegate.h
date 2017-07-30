@@ -14,6 +14,5 @@
 
 + (BOOL)isImage:(NSString *)path;
 
-
 @end
 

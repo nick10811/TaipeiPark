@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Server.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    Server *server = [[Server alloc] init];
+    [server postQuery];
+    
     return YES;
 }
 
