@@ -13,6 +13,7 @@
 #import "DBHelp.h"
 #import "DetailViewController.h"
 #import "AppDelegate.h"
+#import "Server.h"
 
 @interface AttractionsTableViewController ()
 
@@ -34,7 +35,20 @@ MBProgressHUD *hud;
             [hud setHidden:YES];
             hud = nil;
         }
+        
     });
+    
+}
+
+- (void)pullReresh {
+    
+    // lock view to avoid user select cell
+    [self.refreshControl endRefreshing];
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"Loading";
+    
+    Server *server = [[Server alloc] init];
+    [server postQuery];
     
 }
 
@@ -48,11 +62,15 @@ MBProgressHUD *hud;
     attractios = [NSMutableArray arrayWithArray:[db getAttractions]];
     if (attractios.count == 0) {
         hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"Loading";
+        hud.label.text = @"Loading...";
         
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"DataUpdate" object:nil];
+    
+    // pull refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(pullReresh) forControlEvents:UIControlEventValueChanged];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,9 +79,8 @@ MBProgressHUD *hud;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
+- (void)viewDidAppear:(BOOL)animated {
+//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading..."];
 }
 
 - (void)didReceiveMemoryWarning {
