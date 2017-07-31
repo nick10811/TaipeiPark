@@ -54,11 +54,36 @@ MBProgressHUD *hud;
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _search_TextField) {
+        [textField resignFirstResponder];
+        
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"Loading...";
+        
+        DBHelp *db = [[DBHelp alloc] init];
+        attractionsInPark = [db getAttractionsByKeyword:textField.text];
+        parks = [attractionsInPark allKeys];
+        
+        [self.tableView reloadData];
+        
+        if (hud) {
+            [hud setHidden:YES];
+            hud = nil;
+        }
+        
+        return NO;
+    }
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
+    
+    _search_TextField.delegate = self;
     
     DBHelp *db = [[DBHelp alloc] init];
     attractionsInPark = [db getAttractionsByPark];
@@ -138,13 +163,17 @@ MBProgressHUD *hud;
     Attraction *attraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
     if ([AppDelegate isImage:attraction.Image]) {
+        cell.img.image = [UIImage imageNamed:@"Load.png"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 cell.img.image = img;
             });
         });
+    } else {
+        cell.img.image = [UIImage imageNamed:@"noImage.png"];
     }
+    
     cell.parkName.text = attraction.ParkName;
     cell.name.text = attraction.Name;
     cell.introduction.text = attraction.Introduction;

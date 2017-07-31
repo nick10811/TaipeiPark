@@ -16,5 +16,6 @@
 - (NSMutableArray *)getRelationAttractions:(Attraction *)selected;
 - (NSMutableArray *)getAttractions;
 - (NSMutableDictionary *)getAttractionsByPark;
+- (NSMutableDictionary *)getAttractionsByKeyword:(NSString *)keyword;
 
 @end

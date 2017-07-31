@@ -160,7 +160,19 @@
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                         </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="cSR-RG-nPP">
+                            <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="vrG-oe-CjC">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="search_TextField" destination="vrG-oe-CjC" id="bNG-dY-5Az"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Q-Fh-ysf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,6 +198,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="noImage" width="128" height="128"/>
+        <image name="noImage" width="64" height="64"/>
     </resources>
 </document>
