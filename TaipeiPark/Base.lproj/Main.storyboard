@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,18 +60,30 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-qw-Hp6">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzK-Oi-BUh">
                                                 <rect key="frame" x="0.0" y="252" width="375" height="255"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-qw-Hp6">
+                                                        <rect key="frame" x="38" y="10" width="300" height="235"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="ENh-qw-Hp6" firstAttribute="centerX" secondItem="PzK-Oi-BUh" secondAttribute="centerX" id="RCe-D4-VzP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ENh-qw-Hp6" secondAttribute="bottom" constant="10" id="efP-Ag-qEo"/>
+                                                    <constraint firstItem="ENh-qw-Hp6" firstAttribute="top" secondItem="PzK-Oi-BUh" secondAttribute="top" constant="10" id="p6z-Um-0aj"/>
+                                                    <constraint firstItem="ENh-qw-Hp6" firstAttribute="width" secondItem="PzK-Oi-BUh" secondAttribute="width" multiplier="80:100" id="xYi-GD-14Y"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相關景點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUg-8M-u1A">
                                                 <rect key="frame" x="0.0" y="507" width="375" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="tV0-kJ-vLz"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -86,20 +99,19 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="jk5-Tb-i3w" firstAttribute="width" secondItem="dsy-SH-jfw" secondAttribute="width" id="RLe-j3-Oj4"/>
-                                    <constraint firstItem="jk5-Tb-i3w" firstAttribute="centerY" secondItem="dsy-SH-jfw" secondAttribute="centerY" id="cRY-tC-Tw6"/>
                                     <constraint firstItem="jk5-Tb-i3w" firstAttribute="centerX" secondItem="dsy-SH-jfw" secondAttribute="centerX" id="h1l-KK-TAf"/>
-                                    <constraint firstItem="jk5-Tb-i3w" firstAttribute="height" secondItem="dsy-SH-jfw" secondAttribute="height" id="kKK-ee-v0W"/>
-                                    <constraint firstAttribute="bottom" secondItem="jk5-Tb-i3w" secondAttribute="bottom" constant="1" id="lLf-hd-TQ6"/>
+                                    <constraint firstAttribute="bottom" secondItem="jk5-Tb-i3w" secondAttribute="bottom" id="lLf-hd-TQ6"/>
                                     <constraint firstAttribute="trailing" secondItem="jk5-Tb-i3w" secondAttribute="trailing" id="vzH-xF-6m8"/>
+                                    <constraint firstItem="jk5-Tb-i3w" firstAttribute="top" secondItem="dsy-SH-jfw" secondAttribute="top" id="ws8-lL-uG5"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dsy-SH-jfw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fgh-Ag-OHb"/>
                             <constraint firstItem="dsy-SH-jfw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="SaW-LY-Z7d"/>
                             <constraint firstItem="dsy-SH-jfw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vzf-rE-EQu"/>
-                            <constraint firstItem="dsy-SH-jfw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="awq-51-IaP"/>
+                            <constraint firstItem="dsy-SH-jfw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iqb-VV-nCk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dsy-SH-jfw" secondAttribute="bottom" id="tva-ui-xoR"/>
                         </constraints>
                     </view>
                     <connections>
