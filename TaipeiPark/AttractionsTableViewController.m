@@ -138,7 +138,12 @@ MBProgressHUD *hud;
     Attraction *attraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
     if ([AppDelegate isImage:attraction.Image]) {
-        cell.img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:attraction.Image]]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.img.image = img;
+            });
+        });
     }
     cell.parkName.text = attraction.ParkName;
     cell.name.text = attraction.Name;
