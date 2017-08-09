@@ -8,9 +8,9 @@
 
 #import "DetailViewController.h"
 #import "DBHelp.h"
-#import "RelationView.h"
 #import "AppDelegate.h"
 #import <MBProgressHUD.h>
+#import "MyCollectionCell.h"
 
 @interface DetailViewController ()
 
@@ -43,35 +43,6 @@ MBProgressHUD *_hud;
     openTime.text = [NSString stringWithFormat:@"開放時間：%@", selectedAttraction.OpenTime];
     intro.text = selectedAttraction.Introduction;
     
-    CGSize size = CGSizeMake(100*_relations.count, 120);
-    scrollView.contentSize = size;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        RelationView *preView;
-        for (int i = 0; i < _relations.count; i++) {
-            RelationView *rView = [[RelationView alloc] init];
-            Attraction *tmp = (Attraction *)[_relations objectAtIndex:i];
-            if ([AppDelegate isImage:tmp.Image]) {
-                rView.img.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tmp.Image]]];
-                
-            } else {
-                rView.img.image = [UIImage imageNamed:@"noImage.png"];
-            }
-            
-            rView.name.text = tmp.Name;
-            
-            if (i == 0) {
-                rView.frame = CGRectMake(0, 0, 100, 120);
-            } else {
-                rView.frame = CGRectOffset(preView.frame, 100, 0);
-            }
-            
-            [scrollView addSubview:rView];
-            preView = rView;
-            
-        }
-    });
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -98,5 +69,43 @@ MBProgressHUD *_hud;
  // Pass the selected object to the new view controller.
  }
  */
+
+#pragma mark - Collection View DataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _relations.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCollectionCell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[MyCollectionCell alloc] init];
+    }
+    
+    Attraction *relation = (Attraction *)[_relations objectAtIndex:indexPath.row];
+    
+    if ([AppDelegate isImage:relation.Image]) {
+        cell.rImage_ImageView.image = [UIImage imageNamed:@"Load.png"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *rImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:relation.Image]]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.rImage_ImageView.image = rImage;
+            });
+        });
+        
+    } else {
+        cell.rImage_ImageView.image = [UIImage imageNamed:@"noImage.png"];
+        
+    }
+    
+    cell.rName_Label.text = relation.Name;
+    cell.rName_Label.adjustsFontSizeToFitWidth = YES;
+    
+    return cell;
+    
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
 
 @end
