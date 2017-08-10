@@ -120,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				CECB76391F3BEEBF0057E00C /* CheckUpdate */,
+				CECB76411F3C3CA70057E00C /* DataStore */,
 				94808DB61F2A151100AF1F91 /* Utilies */,
 				94808D841F2A031B00AF1F91 /* View */,
 				94808D831F2A030700AF1F91 /* ViewController */,
@@ -179,8 +180,6 @@
 				94808DB81F2A155800AF1F91 /* Attraction.m */,
 				94F973B31F2B89AF00FB46C5 /* MyCell.h */,
 				94F973B41F2B89AF00FB46C5 /* MyCell.m */,
-				947BA43E1F2C272D00570F2F /* DBHelp.h */,
-				947BA43F1F2C272D00570F2F /* DBHelp.m */,
 				CE9117011F3AA65C00AE59CD /* MyCollectionCell.h */,
 				CE9117021F3AA65C00AE59CD /* MyCollectionCell.m */,
 			);
@@ -194,6 +193,15 @@
 				CECB763B1F3BEF6E0057E00C /* UpdateManager.m */,
 			);
 			name = CheckUpdate;
+			sourceTree = "<group>";
+		};
+		CECB76411F3C3CA70057E00C /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				947BA43E1F2C272D00570F2F /* DBHelp.h */,
+				947BA43F1F2C272D00570F2F /* DBHelp.m */,
+			);
+			name = DataStore;
 			sourceTree = "<group>";
 		};
 		D471CB73AA2214E12FCF86AC /* Frameworks */ = {

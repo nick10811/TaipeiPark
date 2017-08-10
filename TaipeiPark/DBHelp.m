@@ -21,6 +21,22 @@
     return self;
 }
 
+- (NSInteger)getCount {
+    FMDatabase *db = [self dbPreOpen];
+    FMResultSet *resultSet = [db executeQuery:@"SELECT COUNT(name) AS count FROM Attractions "];
+    
+    int count = 0;
+    while ([resultSet next]) {
+        count = [resultSet intForColumn:@"count"];
+        
+    }
+    
+    [db close];
+    
+    return count;
+    
+}
+
 - (void)cleanAttractions {
     FMDatabase *db = [self dbPreOpen];
     
@@ -37,47 +53,6 @@
     }
     
     [db close];
-}
-
-- (NSMutableArray *)getRelationAttractions:(Attraction *)selected {
-    FMDatabase *db = [self dbPreOpen];
-    NSString *sql = [NSString stringWithFormat:@"SELECT name, image FROM Attractions WHERE parkName = '%@' AND name != '%@'", selected.ParkName, selected.Name];
-    FMResultSet *resultSet = [db executeQuery:sql];
-    
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    while ([resultSet next]) {
-        Attraction *tmp = [[Attraction alloc] init];
-        tmp.Name = [resultSet stringForColumn:@"name"];
-        tmp.Image = [resultSet stringForColumn:@"image"];
-        
-        [results addObject:tmp];
-    }
-    
-    [db close];
-    
-    return results;
-}
-
-- (NSMutableArray *)getAttractions {
-    FMDatabase *db = [self dbPreOpen];
-    FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM Attractions"];
-    
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    while ([resultSet next]) {
-        Attraction *tmp = [[Attraction alloc] init];
-        tmp.ParkName = [resultSet stringForColumn:@"parkName"];
-        tmp.Name = [resultSet stringForColumn:@"name"];
-        tmp.YearBuilt = [resultSet stringForColumn:@"yearBuild"];
-        tmp.OpenTime = [resultSet stringForColumn:@"openTime"];
-        tmp.Image = [resultSet stringForColumn:@"image"];
-        tmp.Introduction = [resultSet stringForColumn:@"introduction"];
-        
-        [results addObject:tmp];
-    }
-    
-    [db close];
-    
-    return results;
 }
 
 - (NSMutableDictionary *)getAttractionsByPark {

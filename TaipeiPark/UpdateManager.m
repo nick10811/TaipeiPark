@@ -23,9 +23,6 @@
 int offset = 0;
 
 - (UpdateManager *)parseData {
-    DBHelp *db = [[DBHelp alloc] init];
-    [db cleanAttractions];
-    
     NSString *urlString = [NSString stringWithFormat:@"%@&limit=100&offset=0", serverURL];
     
     // get json and store to sqlite
@@ -45,6 +42,14 @@ int offset = 0;
         
         // store data to sqlite
         DBHelp *db = [[DBHelp alloc] init];
+        if (offset == 0) {
+            if ([db getCount] == json.result.count) { // check data is useful
+                _progressBlock((float)json.result.count, (float)json.result.count);
+                return;
+            } else {
+                [db cleanAttractions];
+            }
+        }
         [db batchInsertAttraction:json.result.results];
         
         // get more data

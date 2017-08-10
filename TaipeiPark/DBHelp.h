@@ -11,10 +11,9 @@
 
 @interface DBHelp : NSObject
 
+- (NSInteger)getCount;
 - (void)batchInsertAttraction:(NSArray *)atts;
 - (void)cleanAttractions;
-- (NSMutableArray *)getRelationAttractions:(Attraction *)selected;
-- (NSMutableArray *)getAttractions;
 - (NSMutableDictionary *)getAttractionsByPark;
 - (NSMutableDictionary *)getAttractionsByKeyword:(NSString *)keyword;
 
