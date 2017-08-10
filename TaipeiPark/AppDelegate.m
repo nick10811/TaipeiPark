@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Server.h"
 
 @interface AppDelegate ()
 
@@ -25,10 +24,14 @@
     return NO;
 }
 
+- (void)returnMainView {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MainNav"];
+    self.window.rootViewController = viewController;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    Server *server = [[Server alloc] init];
-    [server postQuery];
     
     return YES;
 }

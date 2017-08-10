@@ -13,7 +13,7 @@
 #import "DBHelp.h"
 #import "DetailViewController.h"
 #import "AppDelegate.h"
-#import "Server.h"
+#import "UpdateManager.h"
 
 @interface AttractionsTableViewController ()
 
@@ -25,23 +25,6 @@ NSArray *parks; // section
 NSMutableDictionary *attractionsInPark; // cell
 MBProgressHUD *hud;
 
-- (void)refresh {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        DBHelp *db = [[DBHelp alloc] init];
-        attractionsInPark = [db getAttractionsByPark];
-        parks = [attractionsInPark allKeys];
-        
-        [self.tableView reloadData];
-        
-        if (hud) {
-            [hud setHidden:YES];
-            hud = nil;
-        }
-        
-    });
-    
-}
-
 - (void)pullReresh {
     
     // lock view to avoid user select cell
@@ -49,8 +32,25 @@ MBProgressHUD *hud;
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"Loading...";
     
-    Server *server = [[Server alloc] init];
-    [server postQuery];
+    UpdateManager *um = [[UpdateManager alloc] init];
+    [[um parseData] setProgressBlock:^(float stored, float total) {
+        if (stored >= total) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                DBHelp *db = [[DBHelp alloc] init];
+                attractionsInPark = [db getAttractionsByPark];
+                parks = [attractionsInPark allKeys];
+                
+                [self.tableView reloadData];
+                
+                if (hud) {
+                    [hud setHidden:YES];
+                    hud = nil;
+                }
+                
+            });
+        }
+        
+    }];
     
 }
 
@@ -88,13 +88,6 @@ MBProgressHUD *hud;
     DBHelp *db = [[DBHelp alloc] init];
     attractionsInPark = [db getAttractionsByPark];
     parks = [attractionsInPark allKeys];
-    if (parks.count == 0) {
-        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"Loading...";
-        
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"DataUpdate" object:nil];
     
     // pull refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
