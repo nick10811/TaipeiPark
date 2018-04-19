@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import <MBProgressHUD.h>
 #import "MyCollectionCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DetailViewController ()
 
@@ -60,16 +61,6 @@ MBProgressHUD *_hud;
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 #pragma mark - Collection View DataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _relations.count;
@@ -84,17 +75,11 @@ MBProgressHUD *_hud;
     Attraction *relation = (Attraction *)[_relations objectAtIndex:indexPath.row];
     
     if ([AppDelegate isImage:relation.Image]) {
-        cell.rImage_ImageView.image = [UIImage imageNamed:@"Load.png"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            UIImage *rImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:relation.Image]]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                cell.rImage_ImageView.image = rImage;
-            });
-        });
+        [cell.rImage_ImageView sd_setImageWithURL:[NSURL URLWithString:relation.Image]
+                    placeholderImage:[UIImage imageNamed:@"Load.png"]];
         
     } else {
         cell.rImage_ImageView.image = [UIImage imageNamed:@"noImage.png"];
-        
     }
     
     cell.rName_Label.text = relation.Name;
