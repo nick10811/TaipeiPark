@@ -1,5 +1,5 @@
 //
-//  WebService.h
+//  ParkService.h
 //  TaipeiPark
 //
 //  Created by Nick Yang on 2018/4/19.
@@ -10,7 +10,7 @@
 #import "HttpConnection.h"
 #import "Attraction.h"
 
-@interface WebService : HttpConnection
+@interface ParkService : HttpConnection
 
 -(void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
           error:(void(^)(long, NSString *))errorBlock;

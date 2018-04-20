@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9428566C2088870300342E68 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856682088870200342E68 /* WebService.m */; };
 		9428566D2088870300342E68 /* HttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856692088870200342E68 /* HttpConnection.m */; };
 		942856872088874D00342E68 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856702088874D00342E68 /* LaunchViewController.m */; };
 		942856882088874D00342E68 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856712088874D00342E68 /* DetailViewController.m */; };
@@ -26,6 +25,8 @@
 		94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D5F1F2A017300AF1F91 /* AppDelegate.m */; };
 		94808D681F2A017300AF1F91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94808D671F2A017300AF1F91 /* Assets.xcassets */; };
 		94808D761F2A017400AF1F91 /* TaipeiParkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D751F2A017400AF1F91 /* TaipeiParkTests.m */; };
+		94F59566208A546500A7FF1D /* UIViewController+BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F59565208A546500A7FF1D /* UIViewController+BaseVC.m */; };
+		94F5956A208A547100A7FF1D /* ParkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F59568208A547100A7FF1D /* ParkService.m */; };
 		B47FFADB5269094359220D90 /* libPods-TaipeiParkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BED85B02C920465F2A9B942 /* libPods-TaipeiParkTests.a */; };
 		E4659A84D005DEAF189FE226 /* libPods-TaipeiPark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7680B838EF1CF4D2DCE76B /* libPods-TaipeiPark.a */; };
 /* End PBXBuildFile section */
@@ -45,10 +46,8 @@
 		3D2FE807C2D79782F1BC10E5 /* Pods-TaipeiParkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiParkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiParkTests/Pods-TaipeiParkTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D3EEC7FFBE67CDF6596133A /* Pods-TaipeiPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.debug.xcconfig"; sourceTree = "<group>"; };
 		6DA56B8D11ED93DEE5A552C1 /* Pods-TaipeiPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.release.xcconfig"; sourceTree = "<group>"; };
-		942856682088870200342E68 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		942856692088870200342E68 /* HttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpConnection.m; sourceTree = "<group>"; };
 		9428566A2088870300342E68 /* HttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpConnection.h; sourceTree = "<group>"; };
-		9428566B2088870300342E68 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		9428566F2088874D00342E68 /* AttractionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionsTableViewController.h; sourceTree = "<group>"; };
 		942856702088874D00342E68 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		942856712088874D00342E68 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
@@ -80,6 +79,10 @@
 		94808D711F2A017400AF1F91 /* TaipeiParkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaipeiParkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94808D751F2A017400AF1F91 /* TaipeiParkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaipeiParkTests.m; sourceTree = "<group>"; };
 		94808D771F2A017400AF1F91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94F59564208A546500A7FF1D /* UIViewController+BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BaseVC.h"; sourceTree = "<group>"; };
+		94F59565208A546500A7FF1D /* UIViewController+BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BaseVC.m"; sourceTree = "<group>"; };
+		94F59568208A547100A7FF1D /* ParkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkService.m; sourceTree = "<group>"; };
+		94F59569208A547100A7FF1D /* ParkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkService.h; sourceTree = "<group>"; };
 		9BED85B02C920465F2A9B942 /* libPods-TaipeiParkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TaipeiParkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7680B838EF1CF4D2DCE76B /* libPods-TaipeiPark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TaipeiPark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,8 +113,7 @@
 			children = (
 				9428566A2088870300342E68 /* HttpConnection.h */,
 				942856692088870200342E68 /* HttpConnection.m */,
-				9428566B2088870300342E68 /* WebService.h */,
-				942856682088870200342E68 /* WebService.m */,
+				94F59567208A547100A7FF1D /* Services */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				94285667208886E900342E68 /* Network */,
+				94F59563208A546500A7FF1D /* Category */,
 				CECB76411F3C3CA70057E00C /* DataStore */,
 				942856822088874D00342E68 /* Manager */,
 				942856752088874D00342E68 /* Models */,
@@ -216,6 +219,24 @@
 				94808D771F2A017400AF1F91 /* Info.plist */,
 			);
 			path = TaipeiParkTests;
+			sourceTree = "<group>";
+		};
+		94F59563208A546500A7FF1D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				94F59564208A546500A7FF1D /* UIViewController+BaseVC.h */,
+				94F59565208A546500A7FF1D /* UIViewController+BaseVC.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		94F59567208A547100A7FF1D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				94F59568208A547100A7FF1D /* ParkService.m */,
+				94F59569208A547100A7FF1D /* ParkService.h */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CECB76411F3C3CA70057E00C /* DataStore */ = {
@@ -460,12 +481,13 @@
 			files = (
 				9428568A2088874D00342E68 /* Attraction.m in Sources */,
 				9428568B2088874D00342E68 /* MyCollectionCell.m in Sources */,
-				9428566C2088870300342E68 /* WebService.m in Sources */,
 				947BA4401F2C272D00570F2F /* DBHelp.m in Sources */,
 				9428568F2088874D00342E68 /* MyCell.m in Sources */,
 				942856872088874D00342E68 /* LaunchViewController.m in Sources */,
 				9428566D2088870300342E68 /* HttpConnection.m in Sources */,
 				94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */,
+				94F59566208A546500A7FF1D /* UIViewController+BaseVC.m in Sources */,
+				94F5956A208A547100A7FF1D /* ParkService.m in Sources */,
 				94808D5D1F2A017300AF1F91 /* main.m in Sources */,
 				942856892088874D00342E68 /* AttractionsTableViewController.m in Sources */,
 				942856912088874D00342E68 /* UpdateManager.m in Sources */,

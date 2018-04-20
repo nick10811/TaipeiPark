@@ -14,8 +14,7 @@
 @property (nonatomic, strong) NSString *urlname;
 
 -(void)requestGet:(NSString *)urlString
-         response:(void(^)(JSONModel *))responseBlock
+         response:(void(^)(NSDictionary *))responseBlock
             error:(void(^)(long, NSString *))errorBlock;
 
 @end
-

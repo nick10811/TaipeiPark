@@ -15,6 +15,8 @@
 #import "AppDelegate.h"
 #import "UpdateManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ParkService.h"
+#import "UIViewController+BaseVC.h"
 
 @interface AttractionsTableViewController ()
 
@@ -84,11 +86,13 @@ MBProgressHUD *hud;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
     
-    _search_TextField.delegate = self;
+//    _search_TextField.delegate = self;
+//
+//    DBHelp *db = [[DBHelp alloc] init];
+//    attractionsInPark = [db getAttractionsByPark];
+//    parks = [attractionsInPark allKeys];
     
-    DBHelp *db = [[DBHelp alloc] init];
-    attractionsInPark = [db getAttractionsByPark];
-    parks = [attractionsInPark allKeys];
+    [self refreshData];
     
     // pull refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -110,8 +114,44 @@ MBProgressHUD *hud;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+- (void)refreshData {
+    ParkService *webService = [[ParkService alloc] init];
+    [webService loadData:^(NSMutableArray<Attraction *> *parkArray) {
+        [self dataConvert:parkArray];
+        [self.tableView reloadData];
+        
+    } error:^(long code, NSString *message) {
+        [self showAlertWithConfirmTitle:[NSString stringWithFormat:@"Error(%d)", code] Message:message];
+    }];
+    
+}
 
+- (void)dataConvert:(NSMutableArray<Attraction *> *) parkArray {
+    // classify
+    NSMutableArray *sectionArray = [[NSMutableArray alloc] init];
+    NSMutableDictionary *cellArray = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < parkArray.count; i++) {
+        Attraction *park = parkArray[i];
+        if (![sectionArray containsObject:park.ParkName]) {
+            [sectionArray addObject:park.ParkName];
+            
+            NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+            [tmpArray addObject:park];
+            [cellArray setObject:tmpArray forKey:park.ParkName];
+            
+        } else {
+            NSMutableArray *existArray = [cellArray objectForKey:park.ParkName];
+            [existArray addObject:park];
+            [cellArray removeObjectForKey:park.ParkName];
+            [cellArray setObject:existArray forKey:park.ParkName];
+            
+        }
+    }
+    parks = [sectionArray copy];
+    attractionsInPark = [cellArray copy];
+}
+
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     int num = (int)parks.count;
     NSLog(@"section number: %d", num);
