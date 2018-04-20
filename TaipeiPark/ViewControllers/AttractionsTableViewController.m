@@ -10,10 +10,8 @@
 #import "MyCell.h"
 #import "Attraction.h"
 #import <MBProgressHUD.h>
-#import "DBHelp.h"
 #import "DetailViewController.h"
 #import "AppDelegate.h"
-#import "UpdateManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ParkService.h"
 #import "UIViewController+BaseVC.h"
@@ -35,49 +33,6 @@ MBProgressHUD *hud;
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.label.text = @"Loading...";
     
-    UpdateManager *um = [[UpdateManager alloc] init];
-    [[um parseData] setProgressBlock:^(float stored, float total) {
-        if (stored >= total) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                DBHelp *db = [[DBHelp alloc] init];
-                attractionsInPark = [db getAttractionsByPark];
-                parks = [attractionsInPark allKeys];
-                
-                [self.tableView reloadData];
-                
-                if (hud) {
-                    [hud setHidden:YES];
-                    hud = nil;
-                }
-                
-            });
-        }
-        
-    }];
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == _search_TextField) {
-        [textField resignFirstResponder];
-        
-        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.label.text = @"Loading...";
-        
-        DBHelp *db = [[DBHelp alloc] init];
-        attractionsInPark = [db getAttractionsByKeyword:textField.text];
-        parks = [attractionsInPark allKeys];
-        
-        [self.tableView reloadData];
-        
-        if (hud) {
-            [hud setHidden:YES];
-            hud = nil;
-        }
-        
-        return NO;
-    }
-    return YES;
 }
 
 - (void)viewDidLoad {
@@ -85,12 +40,6 @@ MBProgressHUD *hud;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
-    
-//    _search_TextField.delegate = self;
-//
-//    DBHelp *db = [[DBHelp alloc] init];
-//    attractionsInPark = [db getAttractionsByPark];
-//    parks = [attractionsInPark allKeys];
     
     [self refreshData];
     

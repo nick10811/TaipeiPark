@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttractionsTableViewController : UITableViewController <UITextFieldDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextField *search_TextField;
+@interface AttractionsTableViewController : UITableViewController
 
 @end

@@ -195,63 +195,11 @@
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="cSR-RG-nPP">
-                            <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="vrG-oe-CjC">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                            </textField>
-                        </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="search_TextField" destination="vrG-oe-CjC" id="bNG-dY-5Az"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Q-Fh-ysf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="288.80000000000001" y="138.98050974512745"/>
-        </scene>
-        <!--Launch View Controller-->
-        <scene sceneID="P1H-n6-eZX">
-            <objects>
-                <viewController id="mH4-IX-bYd" customClass="LaunchViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="435-eL-AMg"/>
-                        <viewControllerLayoutGuide type="bottom" id="ki8-qI-Ycp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5Ho-NI-4MV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaipeiPark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKn-VA-scQ">
-                                <rect key="frame" x="38" y="316" width="300" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4xe-o9-N5U">
-                                <rect key="frame" x="37" y="615" width="300" height="2"/>
-                            </progressView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="lKn-VA-scQ" firstAttribute="centerX" secondItem="5Ho-NI-4MV" secondAttribute="centerX" id="0YV-ue-sD0"/>
-                            <constraint firstItem="4xe-o9-N5U" firstAttribute="width" secondItem="5Ho-NI-4MV" secondAttribute="width" multiplier="80:100" id="FT1-iL-d4X"/>
-                            <constraint firstItem="lKn-VA-scQ" firstAttribute="centerY" secondItem="5Ho-NI-4MV" secondAttribute="centerY" id="KQ4-RM-PN8"/>
-                            <constraint firstItem="4xe-o9-N5U" firstAttribute="centerX" secondItem="5Ho-NI-4MV" secondAttribute="centerX" id="etx-L8-FhE"/>
-                            <constraint firstItem="lKn-VA-scQ" firstAttribute="width" secondItem="5Ho-NI-4MV" secondAttribute="width" multiplier="80:100" id="gA8-mK-JV5"/>
-                            <constraint firstItem="ki8-qI-Ycp" firstAttribute="top" secondItem="4xe-o9-N5U" secondAttribute="bottom" constant="50" id="hJv-jO-NhN"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dataLoad_ProgressView" destination="4xe-o9-N5U" id="rKP-G5-Ujo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fsH-Ho-hLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1454" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eKe-Xz-Sck">

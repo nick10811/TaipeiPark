@@ -7,7 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import "DBHelp.h"
 #import "AppDelegate.h"
 #import <MBProgressHUD.h>
 #import "MyCollectionCell.h"
