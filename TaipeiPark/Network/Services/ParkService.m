@@ -18,8 +18,15 @@
 
 - (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock {
-    [self requestGet:[NSString stringWithFormat:@"%@%@", serverIP, self.urlname] response:^(NSDictionary *response) {
+    [self loadData:responseBlock error:errorBlock offset:0];
+}
+
+- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+           error:(void(^)(long, NSString *))errorBlock
+          offset:(int)offset {
+    [self requestGet:[NSString stringWithFormat:@"%@%@&limit=100&offset=%d", serverIP, self.urlname, offset] response:^(NSDictionary *response) {
         RtnData *json = [[RtnData alloc] initWithDictionary:response error:nil];
+        _nextOffset = (int)json.result.offset+100;
         responseBlock([NSMutableArray arrayWithArray:json.result.results]);
         
     } error:^(long code, NSString *message) {

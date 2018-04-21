@@ -12,7 +12,13 @@
 
 @interface ParkService : HttpConnection
 
+@property (nonatomic,assign)int nextOffset;
+
 - (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock;
+
+- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+           error:(void(^)(long, NSString *))errorBlock
+          offset:(int)offset;
 
 @end

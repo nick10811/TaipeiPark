@@ -21,8 +21,9 @@
 
 @implementation AttractionsTableViewController
 
-NSArray *parks; // section
-NSMutableDictionary *attractionsInPark; // cell
+ParkService *webService;
+NSMutableArray *sectionArray; // section
+NSMutableDictionary *cellDictonayArray; // cell
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +31,11 @@ NSMutableDictionary *attractionsInPark; // cell
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
     
-    [self refreshData];
+    sectionArray = [[NSMutableArray alloc] init];
+    cellDictonayArray = [[NSMutableDictionary alloc] init];
+    
+    webService = [[ParkService alloc] init];
+    [self loadData];
     
     // pull refresh
 //    self.refreshControl = [[UIRefreshControl alloc] init];
@@ -43,9 +48,17 @@ NSMutableDictionary *attractionsInPark; // cell
     // Dispose of any resources that can be recreated.
 }
 
-- (void)refreshData {
+- (void)loadData {
+    [self getDataFromServer:0];
+}
+
+- (void)loadMoreData {
+    [self getDataFromServer:webService.nextOffset];
+    
+}
+
+- (void)getDataFromServer:(int)offset {
     [self showLoading:YES];
-    ParkService *webService = [[ParkService alloc] init];
     [webService loadData:^(NSMutableArray<Attraction *> *parkArray) {
         [self showLoading:NO];
         [self dataConvert:parkArray];
@@ -54,14 +67,12 @@ NSMutableDictionary *attractionsInPark; // cell
     } error:^(long code, NSString *message) {
         [self showLoading:NO];
         [self showAlertWithConfirmTitle:[NSString stringWithFormat:@"Error(%d)", code] Message:message];
-    }];
-    
+        
+    } offset:offset];
 }
 
 - (void)dataConvert:(NSMutableArray<Attraction *> *) parkArray {
     // classify
-    NSMutableArray *sectionArray = [[NSMutableArray alloc] init];
-    NSMutableDictionary *cellArray = [[NSMutableDictionary alloc] init];
     for (int i = 0; i < parkArray.count; i++) {
         Attraction *park = parkArray[i];
         if (![sectionArray containsObject:park.ParkName]) {
@@ -69,32 +80,30 @@ NSMutableDictionary *attractionsInPark; // cell
             
             NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
             [tmpArray addObject:park];
-            [cellArray setObject:tmpArray forKey:park.ParkName];
+            [cellDictonayArray setObject:tmpArray forKey:park.ParkName];
             
         } else {
-            NSMutableArray *existArray = [cellArray objectForKey:park.ParkName];
+            NSMutableArray *existArray = [cellDictonayArray objectForKey:park.ParkName];
             [existArray addObject:park];
-            [cellArray removeObjectForKey:park.ParkName];
-            [cellArray setObject:existArray forKey:park.ParkName];
+            [cellDictonayArray removeObjectForKey:park.ParkName];
+            [cellDictonayArray setObject:existArray forKey:park.ParkName];
             
         }
     }
-    parks = [sectionArray copy];
-    attractionsInPark = [cellArray copy];
 }
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    int num = (int)parks.count;
-    NSLog(@"section number: %d", num);
+    int num = (int)sectionArray.count;
+//    NSLog(@"section number: %d", num);
     return num;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *parkName = parks[section];
-    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    NSString *parkName = sectionArray[section];
+    NSArray *relactions = [cellDictonayArray objectForKey:parkName];
     int num = (int)relactions.count;
-    NSLog(@"section:%@, num:%d", parkName, num);
+//    NSLog(@"section:%@, num:%d", parkName, num);
     return num;
 }
 
@@ -107,7 +116,7 @@ NSMutableDictionary *attractionsInPark; // cell
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *parkName = parks[section];
+    NSString *parkName = sectionArray[section];
     return parkName;
 }
 
@@ -123,8 +132,8 @@ NSMutableDictionary *attractionsInPark; // cell
         }
     }
     
-    NSString *parkName = parks[indexPath.section];
-    NSArray *relactions = [attractionsInPark objectForKey:parkName];
+    NSString *parkName = sectionArray[indexPath.section];
+    NSArray *relactions = [cellDictonayArray objectForKey:parkName];
     
     Attraction *attraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
@@ -145,8 +154,8 @@ NSMutableDictionary *attractionsInPark; // cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *parkName = parks[indexPath.section];
-    NSMutableArray *relactions = [attractionsInPark objectForKey:parkName];
+    NSString *parkName = sectionArray[indexPath.section];
+    NSMutableArray *relactions = [cellDictonayArray objectForKey:parkName];
     
     DetailViewController *vc = (DetailViewController *)[Functions findViewControllerByIDFromStoryboard:@"Main" viewControllerID:@"DetailViewController"];
     vc.selectedAttraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
@@ -154,6 +163,25 @@ NSMutableDictionary *attractionsInPark; // cell
     [vc.relations removeObjectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self checkScrollOffset:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!scrollView.isDecelerating && !scrollView.isDragging) {
+        [self checkScrollOffset:scrollView];
+    }
+}
+
+- (void)checkScrollOffset:(UIScrollView *)scrollView {
+    int offset = scrollView.contentOffset.y;
+    int maxOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    if (maxOffset - offset < 0) {
+        [self loadMoreData];
+    }
 }
 
 @end
