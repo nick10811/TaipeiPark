@@ -12,8 +12,5 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (BOOL)isImage:(NSString *)path;
-- (void)returnMainView;
-
 @end
 

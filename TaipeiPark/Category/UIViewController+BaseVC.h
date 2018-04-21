@@ -10,6 +10,6 @@
 
 @interface UIViewController (BaseVC)
 
--(void) showAlertWithConfirmTitle:(NSString *)title Message:(NSString *)msg;
+- (void)showAlertWithConfirmTitle:(NSString *)title Message:(NSString *)msg;
 
 @end

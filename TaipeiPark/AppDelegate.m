@@ -14,22 +14,6 @@
 
 @implementation AppDelegate
 
-+ (BOOL)isImage:(NSString *)path {
-    NSString *extension = [path pathExtension];
-    
-    if ([[extension uppercaseString] isEqualToString:@"JPG"] ||
-        [[extension uppercaseString] isEqualToString:@"PNG"]) {
-        return YES;
-    }
-    return NO;
-}
-
-- (void)returnMainView {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MainNav"];
-    self.window.rootViewController = viewController;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     

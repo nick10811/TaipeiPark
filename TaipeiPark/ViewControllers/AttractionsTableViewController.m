@@ -11,10 +11,10 @@
 #import "Attraction.h"
 #import <MBProgressHUD.h>
 #import "DetailViewController.h"
-#import "AppDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ParkService.h"
 #import "UIViewController+BaseVC.h"
+#import "Functions.h"
 
 @interface AttractionsTableViewController ()
 
@@ -145,7 +145,7 @@ MBProgressHUD *hud;
     
     Attraction *attraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     
-    if ([AppDelegate isImage:attraction.Image]) {
+    if ([Functions isImage:attraction.Image]) {
         [cell.img sd_setImageWithURL:[NSURL URLWithString:attraction.Image]
                      placeholderImage:[UIImage imageNamed:@"Load.png"]];
     } else {
@@ -165,7 +165,7 @@ MBProgressHUD *hud;
     NSString *parkName = parks[indexPath.section];
     NSMutableArray *relactions = [attractionsInPark objectForKey:parkName];
     
-    DetailViewController *vc = (DetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    DetailViewController *vc = (DetailViewController *)[Functions findViewControllerByIDFromStoryboard:@"Main" viewControllerID:@"DetailViewController"];
     vc.selectedAttraction = (Attraction *)[relactions objectAtIndex:indexPath.row];
     vc.relations = [NSMutableArray arrayWithArray:relactions];
     [vc.relations removeObjectAtIndex:indexPath.row];

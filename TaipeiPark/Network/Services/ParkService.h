@@ -12,7 +12,7 @@
 
 @interface ParkService : HttpConnection
 
--(void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
-          error:(void(^)(long, NSString *))errorBlock;
+- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+           error:(void(^)(long, NSString *))errorBlock;
 
 @end

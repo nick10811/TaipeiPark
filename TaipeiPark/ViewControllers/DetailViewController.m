@@ -7,10 +7,10 @@
 //
 
 #import "DetailViewController.h"
-#import "AppDelegate.h"
 #import <MBProgressHUD.h>
 #import "MyCollectionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "Functions.h"
 
 @interface DetailViewController ()
 
@@ -34,7 +34,7 @@ MBProgressHUD *_hud;
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.label.text = @"Loading";
     
-    if ([AppDelegate isImage:selectedAttraction.Image]) {
+    if ([Functions isImage:selectedAttraction.Image]) {
         NSURL *url = [NSURL URLWithString:selectedAttraction.Image];
         img.image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:url]];
     }
@@ -73,7 +73,7 @@ MBProgressHUD *_hud;
     
     Attraction *relation = (Attraction *)[_relations objectAtIndex:indexPath.row];
     
-    if ([AppDelegate isImage:relation.Image]) {
+    if ([Functions isImage:relation.Image]) {
         [cell.rImage_ImageView sd_setImageWithURL:[NSURL URLWithString:relation.Image]
                     placeholderImage:[UIImage imageNamed:@"Load.png"]];
         

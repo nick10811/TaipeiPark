@@ -10,7 +10,7 @@
 
 @implementation UIViewController (BaseVC)
 
--(void) showAlertWithConfirmTitle:(NSString *)title Message:(NSString *)msg {
+- (void)showAlertWithConfirmTitle:(NSString *)title Message:(NSString *)msg {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -13,8 +13,8 @@
 
 @property (nonatomic, strong) NSString *urlname;
 
--(void)requestGet:(NSString *)urlString
-         response:(void(^)(NSDictionary *))responseBlock
-            error:(void(^)(long, NSString *))errorBlock;
+- (void)requestGet:(NSString *)urlString
+          response:(void(^)(NSDictionary *))responseBlock
+             error:(void(^)(long, NSString *))errorBlock;
 
 @end
