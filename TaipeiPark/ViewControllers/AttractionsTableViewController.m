@@ -9,12 +9,11 @@
 #import "AttractionsTableViewController.h"
 #import "MyCell.h"
 #import "Attraction.h"
-#import <MBProgressHUD.h>
 #import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ParkService.h"
-#import "UIViewController+BaseVC.h"
 #import "Functions.h"
+#import "UIViewController+BaseVC.h"
 
 @interface AttractionsTableViewController ()
 
@@ -24,16 +23,6 @@
 
 NSArray *parks; // section
 NSMutableDictionary *attractionsInPark; // cell
-MBProgressHUD *hud;
-
-- (void)pullReresh {
-    
-    // lock view to avoid user select cell
-    [self.refreshControl endRefreshing];
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = @"Loading...";
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,18 +33,9 @@ MBProgressHUD *hud;
     [self refreshData];
     
     // pull refresh
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(pullReresh) forControlEvents:UIControlEventValueChanged];
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(pullReresh) forControlEvents:UIControlEventValueChanged];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading..."];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,12 +44,15 @@ MBProgressHUD *hud;
 }
 
 - (void)refreshData {
+    [self showLoading:YES];
     ParkService *webService = [[ParkService alloc] init];
     [webService loadData:^(NSMutableArray<Attraction *> *parkArray) {
+        [self showLoading:NO];
         [self dataConvert:parkArray];
         [self.tableView reloadData];
         
     } error:^(long code, NSString *message) {
+        [self showLoading:NO];
         [self showAlertWithConfirmTitle:[NSString stringWithFormat:@"Error(%d)", code] Message:message];
     }];
     

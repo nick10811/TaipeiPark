@@ -7,10 +7,10 @@
 //
 
 #import "DetailViewController.h"
-#import <MBProgressHUD.h>
 #import "MyCollectionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Functions.h"
+#import "UIViewController+BaseVC.h"
 
 @interface DetailViewController ()
 
@@ -20,8 +20,6 @@
 
 @synthesize selectedAttraction;
 
-MBProgressHUD *_hud;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,9 +28,7 @@ MBProgressHUD *_hud;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.label.text = @"Loading";
+    [self showLoading:YES];
     
     if ([Functions isImage:selectedAttraction.Image]) {
         NSURL *url = [NSURL URLWithString:selectedAttraction.Image];
@@ -47,12 +43,7 @@ MBProgressHUD *_hud;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    if (_hud) {
-        [_hud setHidden:YES];
-        _hud = nil;
-    }
-    
+    [self showLoading:NO];
 }
 
 - (void)didReceiveMemoryWarning {

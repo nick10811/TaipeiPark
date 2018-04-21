@@ -11,5 +11,6 @@
 @interface UIViewController (BaseVC)
 
 - (void)showAlertWithConfirmTitle:(NSString *)title Message:(NSString *)msg;
+- (void)showLoading:(BOOL)show;
 
 @end

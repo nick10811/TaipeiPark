@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+BaseVC.h"
+#import <MBProgressHUD.h>
 
 @implementation UIViewController (BaseVC)
 
@@ -19,6 +20,15 @@
     
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showLoading:(BOOL)show {
+    if (show) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.label.text = @"Loading";
+    } else {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
 }
 
 @end
