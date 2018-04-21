@@ -8,31 +8,17 @@
 
 #import "HttpConnection.h"
 #import <AFNetworking.h>
+#import "HttpClient.h"
 
 @implementation HttpConnection
-AFHTTPSessionManager *sessionManager = nil;
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        sessionManager = [AFHTTPSessionManager manager];
-        sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        sessionManager.responseSerializer.acceptableContentTypes=[[NSSet alloc] initWithObjects:@"application/xml", @"text/xml",@"text/html", @"application/json",@"text/plain",nil];
-        
-        
-    }
-    return self;
-}
 
 - (void)requestGet:(NSString *)urlString
           response:(void(^)(NSDictionary *))responseBlock
              error:(void(^)(long, NSString *))errorBlock {
-    [sessionManager GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        responseBlock((NSDictionary *)responseObject);
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        errorBlock(error.code, error.localizedDescription);
+    [[HttpClient sharedInstance] request:HTTPMethod_GET url:urlString response:^(NSDictionary *responseObject) {
+        responseBlock(responseObject);
+    } error:^(long code, NSString *message) {
+        errorBlock(code, message);
     }];
 }
 

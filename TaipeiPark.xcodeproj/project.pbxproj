@@ -18,6 +18,7 @@
 		9428568F2088874D00342E68 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856812088874D00342E68 /* MyCell.m */; };
 		942856902088874D00342E68 /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856852088874D00342E68 /* AppInfoManager.m */; };
 		945CD98C208ACBDF006DC519 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945CD98B208ACBDF006DC519 /* Functions.m */; };
+		945CD9A5208B3E48006DC519 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 945CD9A4208B3E48006DC519 /* HttpClient.m */; };
 		947BA4421F2C27D000570F2F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */; };
 		94808D5D1F2A017300AF1F91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D5C1F2A017300AF1F91 /* main.m */; };
 		94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94808D5F1F2A017300AF1F91 /* AppDelegate.m */; };
@@ -63,6 +64,8 @@
 		942856852088874D00342E68 /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
 		945CD98A208ACBDF006DC519 /* Functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		945CD98B208ACBDF006DC519 /* Functions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		945CD9A3208B3E48006DC519 /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		945CD9A4208B3E48006DC519 /* HttpClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		94808D581F2A017300AF1F91 /* TaipeiPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaipeiPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94808D5C1F2A017300AF1F91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 		94285667208886E900342E68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				945CD9A3208B3E48006DC519 /* HttpClient.h */,
+				945CD9A4208B3E48006DC519 /* HttpClient.m */,
 				9428566A2088870300342E68 /* HttpConnection.h */,
 				942856692088870200342E68 /* HttpConnection.m */,
 				94F59567208A547100A7FF1D /* Services */,
@@ -480,6 +485,7 @@
 				94808D5D1F2A017300AF1F91 /* main.m in Sources */,
 				942856892088874D00342E68 /* AttractionsTableViewController.m in Sources */,
 				942856882088874D00342E68 /* DetailViewController.m in Sources */,
+				945CD9A5208B3E48006DC519 /* HttpClient.m in Sources */,
 				942856902088874D00342E68 /* AppInfoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
