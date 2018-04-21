@@ -25,6 +25,7 @@ AFHTTPSessionManager *sessionManager = nil;
     self = [super init];
     if (self) {
         sessionManager = [AFHTTPSessionManager manager];
+        [sessionManager.requestSerializer setTimeoutInterval:10]; // timeount after 10 seconds
         sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         sessionManager.responseSerializer.acceptableContentTypes=[[NSSet alloc] initWithObjects:@"application/xml", @"text/xml",@"text/html", @"application/json",@"text/plain",nil];
         
