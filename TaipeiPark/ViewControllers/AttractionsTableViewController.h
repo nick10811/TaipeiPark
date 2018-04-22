@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServiceLoadingDelegate.h"
 
-@interface AttractionsTableViewController : UITableViewController
+@interface AttractionsTableViewController : UITableViewController <WebServiceLoadingDelegate>
 
 @end

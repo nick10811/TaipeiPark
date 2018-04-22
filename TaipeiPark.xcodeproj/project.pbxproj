@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940443BC208D88B800316DF4 /* DetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 940443BB208D88B800316DF4 /* DetailViewModel.m */; };
+		94170FFD208C7C260002755F /* ParkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94170FFC208C7C260002755F /* ParkModel.m */; };
+		94171001208C7F250002755F /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94171000208C7F250002755F /* BaseViewModel.m */; };
+		94171006208C97910002755F /* AttractionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94171005208C97910002755F /* AttractionViewModel.m */; };
 		9428566D2088870300342E68 /* HttpConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856692088870200342E68 /* HttpConnection.m */; };
 		942856882088874D00342E68 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856712088874D00342E68 /* DetailViewController.m */; };
 		942856892088874D00342E68 /* AttractionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856722088874D00342E68 /* AttractionsTableViewController.m */; };
-		9428568A2088874D00342E68 /* Attraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856772088874D00342E68 /* Attraction.m */; };
+		9428568A2088874D00342E68 /* AttractionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856772088874D00342E68 /* AttractionModel.m */; };
 		9428568B2088874D00342E68 /* MyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856792088874D00342E68 /* MyCollectionCell.m */; };
 		9428568C2088874D00342E68 /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9428567A2088874D00342E68 /* MyCell.xib */; };
 		9428568D2088874D00342E68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9428567C2088874D00342E68 /* LaunchScreen.storyboard */; };
@@ -45,14 +49,24 @@
 		3D2FE807C2D79782F1BC10E5 /* Pods-TaipeiParkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiParkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiParkTests/Pods-TaipeiParkTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D3EEC7FFBE67CDF6596133A /* Pods-TaipeiPark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.debug.xcconfig"; sourceTree = "<group>"; };
 		6DA56B8D11ED93DEE5A552C1 /* Pods-TaipeiPark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaipeiPark.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaipeiPark/Pods-TaipeiPark.release.xcconfig"; sourceTree = "<group>"; };
+		940443B9208D751100316DF4 /* DataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataProtocol.h; sourceTree = "<group>"; };
+		940443BA208D88B800316DF4 /* DetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewModel.h; sourceTree = "<group>"; };
+		940443BB208D88B800316DF4 /* DetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewModel.m; sourceTree = "<group>"; };
+		94170FFB208C7C260002755F /* ParkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParkModel.h; sourceTree = "<group>"; };
+		94170FFC208C7C260002755F /* ParkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkModel.m; sourceTree = "<group>"; };
+		94170FFF208C7F250002755F /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		94171000208C7F250002755F /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		94171003208C7F8E0002755F /* WebServiceLoadingDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebServiceLoadingDelegate.h; sourceTree = "<group>"; };
+		94171004208C97910002755F /* AttractionViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttractionViewModel.h; sourceTree = "<group>"; };
+		94171005208C97910002755F /* AttractionViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttractionViewModel.m; sourceTree = "<group>"; };
 		942856692088870200342E68 /* HttpConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpConnection.m; sourceTree = "<group>"; };
 		9428566A2088870300342E68 /* HttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpConnection.h; sourceTree = "<group>"; };
 		9428566F2088874D00342E68 /* AttractionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionsTableViewController.h; sourceTree = "<group>"; };
 		942856712088874D00342E68 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		942856722088874D00342E68 /* AttractionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttractionsTableViewController.m; sourceTree = "<group>"; };
 		942856742088874D00342E68 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		942856762088874D00342E68 /* Attraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attraction.h; sourceTree = "<group>"; };
-		942856772088874D00342E68 /* Attraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attraction.m; sourceTree = "<group>"; };
+		942856762088874D00342E68 /* AttractionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionModel.h; sourceTree = "<group>"; };
+		942856772088874D00342E68 /* AttractionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttractionModel.m; sourceTree = "<group>"; };
 		942856792088874D00342E68 /* MyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionCell.m; sourceTree = "<group>"; };
 		9428567A2088874D00342E68 /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 		9428567B2088874D00342E68 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
@@ -105,6 +119,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94170FFE208C7EF20002755F /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				94170FFF208C7F250002755F /* BaseViewModel.h */,
+				94171000208C7F250002755F /* BaseViewModel.m */,
+				94171004208C97910002755F /* AttractionViewModel.h */,
+				94171005208C97910002755F /* AttractionViewModel.m */,
+				940443BA208D88B800316DF4 /* DetailViewModel.h */,
+				940443BB208D88B800316DF4 /* DetailViewModel.m */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		94171002208C7F650002755F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				94171003208C7F8E0002755F /* WebServiceLoadingDelegate.h */,
+				940443B9208D751100316DF4 /* DataProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		94285667208886E900342E68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +167,10 @@
 		942856752088874D00342E68 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				942856762088874D00342E68 /* Attraction.h */,
-				942856772088874D00342E68 /* Attraction.m */,
+				942856762088874D00342E68 /* AttractionModel.h */,
+				942856772088874D00342E68 /* AttractionModel.m */,
+				94170FFB208C7C260002755F /* ParkModel.h */,
+				94170FFC208C7C260002755F /* ParkModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +235,8 @@
 				94F59563208A546500A7FF1D /* Category */,
 				942856822088874D00342E68 /* Manager */,
 				942856752088874D00342E68 /* Models */,
+				94171002208C7F650002755F /* Protocol */,
+				94170FFE208C7EF20002755F /* View Model */,
 				9428566E2088874D00342E68 /* ViewControllers */,
 				942856782088874D00342E68 /* Views */,
 				94808D5E1F2A017300AF1F91 /* AppDelegate.h */,
@@ -474,17 +514,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9428568A2088874D00342E68 /* Attraction.m in Sources */,
+				9428568A2088874D00342E68 /* AttractionModel.m in Sources */,
 				9428568B2088874D00342E68 /* MyCollectionCell.m in Sources */,
 				9428568F2088874D00342E68 /* MyCell.m in Sources */,
 				945CD98C208ACBDF006DC519 /* Functions.m in Sources */,
+				94171001208C7F250002755F /* BaseViewModel.m in Sources */,
+				94171006208C97910002755F /* AttractionViewModel.m in Sources */,
 				9428566D2088870300342E68 /* HttpConnection.m in Sources */,
 				94808D601F2A017300AF1F91 /* AppDelegate.m in Sources */,
 				94F59566208A546500A7FF1D /* UIViewController+BaseVC.m in Sources */,
+				94170FFD208C7C260002755F /* ParkModel.m in Sources */,
 				94F5956A208A547100A7FF1D /* ParkService.m in Sources */,
 				94808D5D1F2A017300AF1F91 /* main.m in Sources */,
 				942856892088874D00342E68 /* AttractionsTableViewController.m in Sources */,
 				942856882088874D00342E68 /* DetailViewController.m in Sources */,
+				940443BC208D88B800316DF4 /* DetailViewModel.m in Sources */,
 				945CD9A5208B3E48006DC519 /* HttpClient.m in Sources */,
 				942856902088874D00342E68 /* AppInfoManager.m in Sources */,
 			);

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AttractionModel.h"
 
 @interface MyCell : UITableViewCell
 
@@ -14,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *parkName;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *introduction;
+
+- (void)setupUI:(AttractionModel *)model;
 
 @end

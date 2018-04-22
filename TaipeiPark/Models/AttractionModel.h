@@ -1,5 +1,5 @@
 //
-//  Attraction.h
+//  AttractionModel.h
 //  TaipeiPark
 //
 //  Created by Nick Yang on 27/07/2017.
@@ -8,9 +8,9 @@
 
 #import <JSONModel/JSONModel.h>
 
-@protocol Attraction;
+@protocol AttractionModel;
 
-@interface Attraction : JSONModel
+@interface AttractionModel : JSONModel
 
 @property (nonatomic) NSString *_id;
 @property (nonatomic) NSString *ParkName;
@@ -28,7 +28,7 @@
 @property (nonatomic) NSInteger offset;
 @property (nonatomic) NSInteger count;
 @property (nonatomic) NSString *sort;
-@property (nonatomic) NSArray<Attraction> *results;
+@property (nonatomic) NSArray<AttractionModel> *results;
 
 @end
 

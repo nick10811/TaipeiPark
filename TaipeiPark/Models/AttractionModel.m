@@ -1,14 +1,14 @@
 //
-//  Attraction.m
+//  AttractionModel.m
 //  TaipeiPark
 //
 //  Created by Nick Yang on 27/07/2017.
 //  Copyright © 2017 Nick Yang. All rights reserved.
 //
 
-#import "Attraction.h"
+#import "AttractionModel.h"
 
-@implementation Attraction
+@implementation AttractionModel
 
 @synthesize _id;
 @synthesize ParkName;

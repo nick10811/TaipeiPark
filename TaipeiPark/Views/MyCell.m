@@ -7,6 +7,8 @@
 //
 
 #import "MyCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "Functions.h"
 
 @implementation MyCell
 
@@ -19,6 +21,20 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setupUI:(AttractionModel *)model {
+    if ([Functions isImage:model.Image]) {
+        [self.img sd_setImageWithURL:[NSURL URLWithString:model.Image]
+                    placeholderImage:[UIImage imageNamed:@"Load.png"]];
+    } else {
+        self.img.image = [UIImage imageNamed:@"noImage.png"];
+    }
+    
+    self.parkName.text = model.ParkName;
+    self.name.text = model.Name;
+    self.introduction.text = model.Introduction;
+
 }
 
 @end

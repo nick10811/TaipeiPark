@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AttractionModel.h"
 
 @interface MyCollectionCell : UICollectionViewCell
 
 @property (weak,nonatomic) IBOutlet UIImageView *rImage_ImageView;
 @property (weak,nonatomic) IBOutlet UILabel *rName_Label;
+
+- (void)setupUI:(AttractionModel *)model;
 
 @end

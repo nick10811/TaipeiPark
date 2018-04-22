@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Attraction.h"
+#import "AttractionModel.h"
+#import "DetailViewModel.h"
 
 @interface DetailViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource> {
     IBOutlet UIImageView *img;
@@ -17,7 +18,6 @@
     IBOutlet UILabel *intro;
 }
 
-@property (weak, nonatomic) Attraction *selectedAttraction;
-@property (strong, nonatomic) NSMutableArray *relations;
+@property (nonatomic, strong) DetailViewModel *viewModel;
 
 @end

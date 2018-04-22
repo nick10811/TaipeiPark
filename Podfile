@@ -6,7 +6,6 @@ platform :ios, '9.0'
 target 'TaipeiPark' do
 pod 'JSONModel'
 pod 'MBProgressHUD', '~> 1.0.0'
-pod 'FMDB'
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage', '~> 4.0'
 end

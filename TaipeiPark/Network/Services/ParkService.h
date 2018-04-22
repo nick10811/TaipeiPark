@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpConnection.h"
-#import "Attraction.h"
+#import "AttractionModel.h"
 
 @interface ParkService : HttpConnection
 
 @property (nonatomic,assign)int nextOffset;
 
-- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+- (void)loadData:(void(^)(NSMutableArray<AttractionModel*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock;
 
-- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+- (void)loadData:(void(^)(NSMutableArray<AttractionModel*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock
           offset:(int)offset;
 

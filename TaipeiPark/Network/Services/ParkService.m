@@ -8,7 +8,7 @@
 
 #import "ParkService.h"
 #import "AppInfoManager.h"
-#import "Attraction.h"
+#import "AttractionModel.h"
 
 @implementation ParkService
 
@@ -16,12 +16,12 @@
     return @"?scope=resourceAquire&rid=bf073841-c734-49bf-a97f-3757a6013812";
 }
 
-- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+- (void)loadData:(void(^)(NSMutableArray<AttractionModel*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock {
     [self loadData:responseBlock error:errorBlock offset:0];
 }
 
-- (void)loadData:(void(^)(NSMutableArray<Attraction*>*))responseBlock
+- (void)loadData:(void(^)(NSMutableArray<AttractionModel*>*))responseBlock
            error:(void(^)(long, NSString *))errorBlock
           offset:(int)offset {
     [self requestGet:[NSString stringWithFormat:@"%@%@&limit=100&offset=%d", serverIP, self.urlname, offset] response:^(NSDictionary *response) {
