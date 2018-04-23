@@ -65,9 +65,6 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MyCollectionCell" forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[MyCollectionCell alloc] init];
-    }
 
     AttractionModel *model = (AttractionModel *)[viewModel modelAtIndex:indexPath];
     [cell setupUI:model];

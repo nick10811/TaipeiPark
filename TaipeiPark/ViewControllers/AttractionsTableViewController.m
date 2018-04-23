@@ -21,11 +21,13 @@
 @end
 
 @implementation AttractionsTableViewController
+NSString *reusableCellWithIdentifier = @"MyCell";
 AttractionViewModel *viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil] forCellReuseIdentifier:reusableCellWithIdentifier];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 20;
     
@@ -79,15 +81,7 @@ AttractionViewModel *viewModel;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
-    if (cell == nil) {
-        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"MyCell" owner:nil options:nil];
-        for (UIView *view in views) {
-            if ([view isKindOfClass:[MyCell class]]) {
-                cell = (MyCell *)view;
-            }
-        }
-    }
+    MyCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
     
     [cell setupUI:(AttractionModel *)[viewModel modelAtIndex:indexPath]];
     return cell;
