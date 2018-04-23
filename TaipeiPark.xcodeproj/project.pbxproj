@@ -20,7 +20,6 @@
 		9428568D2088874D00342E68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9428567C2088874D00342E68 /* LaunchScreen.storyboard */; };
 		9428568E2088874D00342E68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9428567E2088874D00342E68 /* Main.storyboard */; };
 		9428568F2088874D00342E68 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856812088874D00342E68 /* MyCell.m */; };
-		942856902088874D00342E68 /* AppInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 942856852088874D00342E68 /* AppInfoManager.m */; };
 		945CD98C208ACBDF006DC519 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945CD98B208ACBDF006DC519 /* Functions.m */; };
 		945CD9A5208B3E48006DC519 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 945CD9A4208B3E48006DC519 /* HttpClient.m */; };
 		947BA4421F2C27D000570F2F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 947BA4411F2C27D000570F2F /* libsqlite3.0.tbd */; };
@@ -74,8 +73,6 @@
 		9428567F2088874D00342E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		942856802088874D00342E68 /* MyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionCell.h; sourceTree = "<group>"; };
 		942856812088874D00342E68 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
-		942856832088874D00342E68 /* AppInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoManager.h; sourceTree = "<group>"; };
-		942856852088874D00342E68 /* AppInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoManager.m; sourceTree = "<group>"; };
 		945CD98A208ACBDF006DC519 /* Functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		945CD98B208ACBDF006DC519 /* Functions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
 		945CD9A3208B3E48006DC519 /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
@@ -189,15 +186,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		942856822088874D00342E68 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				942856832088874D00342E68 /* AppInfoManager.h */,
-				942856852088874D00342E68 /* AppInfoManager.m */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		945CD989208ACBC7006DC519 /* Utiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +221,6 @@
 				945CD989208ACBC7006DC519 /* Utiles */,
 				94285667208886E900342E68 /* Network */,
 				94F59563208A546500A7FF1D /* Category */,
-				942856822088874D00342E68 /* Manager */,
 				942856752088874D00342E68 /* Models */,
 				94171002208C7F650002755F /* Protocol */,
 				94170FFE208C7EF20002755F /* View Model */,
@@ -530,7 +517,6 @@
 				942856882088874D00342E68 /* DetailViewController.m in Sources */,
 				940443BC208D88B800316DF4 /* DetailViewModel.m in Sources */,
 				945CD9A5208B3E48006DC519 /* HttpClient.m in Sources */,
-				942856902088874D00342E68 /* AppInfoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

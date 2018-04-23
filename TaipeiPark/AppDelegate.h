@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define serverIP @"http://data.taipei/opendata/datalist/apiAccess"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

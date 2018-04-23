@@ -7,7 +7,7 @@
 //
 
 #import "ParkService.h"
-#import "AppInfoManager.h"
+#import "AppDelegate.h"
 #import "AttractionModel.h"
 
 @implementation ParkService
