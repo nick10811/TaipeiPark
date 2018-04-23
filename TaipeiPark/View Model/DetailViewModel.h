@@ -10,9 +10,8 @@
 #import "BaseViewModel.h"
 #import "ParkModel.h"
 #import "AttractionModel.h"
-#import "DataProtocol.h"
 
-@interface DetailViewModel : BaseViewModel <DataProtocol>
+@interface DetailViewModel : BaseViewModel
 
 - (instancetype)initWithPark:(ParkModel *)park attraction:(AttractionModel *)attraction;
 - (AttractionModel *)selectedModel;

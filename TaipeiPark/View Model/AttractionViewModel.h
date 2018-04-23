@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
-#import "DataProtocol.h"
 
-@interface AttractionViewModel : BaseViewModel <DataProtocol>
+@interface AttractionViewModel : BaseViewModel
 
 @end

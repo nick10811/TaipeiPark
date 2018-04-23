@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "WebServiceLoadingDelegate.h"
+#import "DataProtocol.h"
 
-@interface BaseViewModel : NSObject
+@interface BaseViewModel : NSObject <DataProtocol>
 
 @property (nonatomic, weak) id<WebServiceLoadingDelegate> loadingDelegate;
 @property (nonatomic, assign) LoadingStatus status;
@@ -17,8 +18,5 @@
 
 - (void)nextStatus;
 - (void)refreshData;
-
-- (void)loadData;
-- (void)loadMoreData;
 
 @end

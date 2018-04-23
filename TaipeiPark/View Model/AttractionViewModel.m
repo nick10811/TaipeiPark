@@ -24,9 +24,11 @@ ParkService *webService;
 
 - (void)loadData {
     [webService loadData:^(NSMutableArray<AttractionModel *> *parkArray) {
+        self.status = loadDone;
         [self dataConvert:parkArray];
         
     } error:^(long code, NSString *message) {
+        self.status = loadFail;
         [self.loadingDelegate WebServiceLoadingFail:code Message:message];
         
     }];
@@ -34,9 +36,11 @@ ParkService *webService;
 
 - (void)loadMoreData {
     [webService loadData:^(NSMutableArray<AttractionModel *> *parkArray) {
+        self.status = loadMoreDone;
         [self dataConvert:parkArray];
         
     } error:^(long code, NSString *message) {
+        self.status = loadMoreFail;
         [self.loadingDelegate WebServiceLoadingFail:code Message:message];
         
     } offset:webService.nextOffset];

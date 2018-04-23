@@ -12,6 +12,9 @@
 
 @protocol DataProtocol <NSObject>
 
+- (void)loadData;
+- (void)loadMoreData;
+
 - (NSUInteger)numberOfSection;
 - (NSUInteger)numberOfItemsInSection:(NSUInteger)section;
 - (JSONModel *)modelAtSection:(NSUInteger)section;

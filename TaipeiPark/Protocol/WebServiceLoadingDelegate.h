@@ -16,7 +16,6 @@ typedef enum _LoadingStatus {
     loadMoreStart,
     loadMoreDone,
     loadMoreFail,
-    noMoreCanLoad,
     refreshLoading
     
 } LoadingStatus;
