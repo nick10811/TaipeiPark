@@ -39,7 +39,6 @@
             break;
         case refreshLoading:
         {
-            [self.modelArray removeAllObjects];
             self.status = loadStart;
             [self loadData];
         }

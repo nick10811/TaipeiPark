@@ -46,6 +46,7 @@ AttractionViewModel *viewModel;
 }
 
 - (void)pullRefresh {
+    [self.refreshControl endRefreshing];
     [self showLoading:YES];
     [viewModel refreshData];
 }
